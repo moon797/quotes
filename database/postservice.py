@@ -6,7 +6,7 @@ def add_post_db(user_id, main_text):
         new_post = Post(user_id=user_id, main_text=main_text)
         db.add(new_post)
         db.commit()
-        return True
+        return "Пост успешно добавлен"
 
 def change_post_db(post_id,main_text):
     with next(get_db()) as db:
@@ -15,7 +15,7 @@ def change_post_db(post_id,main_text):
              post.main_text = main_text
              db.commit()
              db.refresh(post)
-             return True
+             return "Пост успешно изменен"
         return False
 
 def delete_post_db(post_id):
@@ -24,7 +24,7 @@ def delete_post_db(post_id):
         if post:
             db.delete(post)
             db.commit()
-            return True
+            return "Пост успешно удален"
         return False
 
 def add_comment_db(comment_id,user_id, main_text):
@@ -32,7 +32,7 @@ def add_comment_db(comment_id,user_id, main_text):
         new_comment = Comment(id=comment_id,user_id=user_id, main_text=main_text)
         db.add(new_comment)
         db.commit()
-        return True
+        return "Комментарий успешно добавлено"
 
 def change_comment_db(comment_id, main_text):
     with next(get_db()) as db:
@@ -41,7 +41,7 @@ def change_comment_db(comment_id, main_text):
             comment.main_text = main_text
             db.commit()
             db.refresh(comment)
-            return True
+            return "Комментарий успешно изменен"
         return False
 
 def delete_comment_db(comment_id):
@@ -50,7 +50,7 @@ def delete_comment_db(comment_id):
         if comment:
             db.delete(comment)
             db.commit()
-            return True
+            return "Комментарий успешно удален"
         return False
 
 
